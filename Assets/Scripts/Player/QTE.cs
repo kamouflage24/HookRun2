@@ -1,72 +1,71 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class QTE : MonoBehaviour
 {
     public Slider qTSlider;
-    public Text keyToPress;
+    public TMP_Text keyToPress;
+    public bool IsActive{ get; private set; }
 
     public bool IsFinished{ get; private set; }
     public bool Succeeded{ get; private set; }
     private bool freeze;
     public bool rapidPress;
     public int decreaseSpeed;
+    public float pressIncrease = 1f;
     private KeyCode key;
-    private readonly KeyCode[] availableOptions = { KeyCode.Alpha1, KeyCode.Alpha2};
+    private readonly KeyCode[] availableOptions = { KeyCode.Q, KeyCode.E};
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       BeginQTE();
+       IsActive = false;
         
     }
     public void BeginQTE(){
         IsFinished = false;
         Succeeded = false;
+        IsActive = true;
         freeze = false;
         
         int rand = Random.Range(0, 2);
-        key = availableOptions[rand];
-        keyToPress.text = availableOptions[rand].ToString();
-        if (rapidPress)
-        {
-            qTSlider.value = 5;
-        }
-        else
-        {
-            qTSlider.value = 10;
-        }
+        key = availableOptions[Random.Range(0, availableOptions.Length)];
+        keyToPress.text = key.ToString();
+        qTSlider.value = rapidPress ? 5f : 3f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!freeze)
+        if (!IsActive)
         {
-            qTSlider.value = Mathf.MoveTowards(qTSlider.value, 0, decreaseSpeed * Time.deltaTime);
+            return;
         }
+    
+       
+            qTSlider.value = Mathf.MoveTowards(qTSlider.value, 0, decreaseSpeed * Time.deltaTime);
+        
 
-        if (rapidPress)
-        {
-            if(Input.GetKeyDown(key) && qTSlider.value > 0)
+            if(Input.GetKeyDown(key))
             {
-                qTSlider.value += 1;
-                if(qTSlider.value == 10)
+                qTSlider.value = Mathf.Clamp(qTSlider.value + pressIncrease, 0f, 10f);
+                if(qTSlider.value >= 10f)
                 {
                     keyToPress.text = "FISH ON!!!";
                     FinishQTE(true);
                 }
             }
             
-            if(qTSlider.value == 0)
+            if(qTSlider.value <= 0f)
             {
                 keyToPress.text = "Tis to be a skill issue!!!";
-                FinishQTE(true);
+                FinishQTE(false);
             }
-        }
     }
     private void FinishQTE(bool succeeded){
         Succeeded = succeeded;
         IsFinished = true;
+        IsActive = false;
         freeze = true;
     }
 }

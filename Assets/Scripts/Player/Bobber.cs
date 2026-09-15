@@ -1,8 +1,9 @@
-
+using System;
 using UnityEngine;
 
 public class Bobber : MonoBehaviour
 {
+    public Action<Collider> Landed;
     private Rigidbody rb;
     private Vector3 previousPosition;
     private void Awake(){
@@ -39,6 +40,7 @@ public class Bobber : MonoBehaviour
                 rb.position = closestHit.point + closestHit.normal * 0.02f;
                 rb.linearVelocity = Vector3.zero;
                 previousPosition = rb.position;
+                Landed?.Invoke(closestHit.collider);
                 return;
             }
 
