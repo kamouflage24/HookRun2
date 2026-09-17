@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 55ebd315c427dc748989be73325f1dca, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.05
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55ebd315c427dc748989be73325f1dca, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.05
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55ebd315c427dc748989be73325f1dca, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55ebd315c427dc748989be73325f1dca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.497
+      value: -7.023733
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55ebd315c427dc748989be73325f1dca, type: 3}
       propertyPath: m_LocalPosition.y
@@ -62,10 +62,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 55ebd315c427dc748989be73325f1dca, type: 3}
       propertyPath: m_Name
-      value: Fish3
+      value: Clown
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 55ebd315c427dc748989be73325f1dca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3557399744048456522}
   m_SourcePrefab: {fileID: 100100000, guid: 55ebd315c427dc748989be73325f1dca, type: 3}
+--- !u!1 &3160430413573341847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 55ebd315c427dc748989be73325f1dca, type: 3}
+  m_PrefabInstance: {fileID: 2818535826117132230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3557399744048456522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160430413573341847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61bca57f2439bfc46a124e59d4656dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fish
+  fishDiff: 12
+  _minWeight: 1.5
+  _maxWeight: 3
+  _minPrice: 50
+  _maxPrice: 100

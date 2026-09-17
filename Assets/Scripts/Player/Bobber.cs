@@ -17,6 +17,7 @@ public class Bobber : MonoBehaviour
         Vector3 currentPosition = rb.position;
         Vector3 movement = currentPosition - previousPosition;
         if(movement.sqrMagnitude > 0f){
+            Physics.SyncTransforms();
             RaycastHit[] hits = Physics.RaycastAll(
                 previousPosition, movement.normalized,
                 movement.magnitude, Physics.DefaultRaycastLayers,

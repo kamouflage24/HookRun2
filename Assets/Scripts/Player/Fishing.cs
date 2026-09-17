@@ -4,6 +4,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Data.Common;
+
+
 
 
 
@@ -15,12 +18,16 @@ public class Fishing : MonoBehaviour
     public GameObject BobberPrefab;
     public LineRenderer castIndicator;
     public Camera playerCamera;
+    public BoatInventory boatInventory;
+    public Transform boatDropPoint;
+    public Transform oceanDropPoint;
    
     
     public float maxCastDistance = 20f;
     public float MaxChargeTime = 2f;
     public float minBiteDelay = 2f;
     public float maxBiteDelay = 5f;
+    public float interactionDistance = 5f;
 
     private float chargeTimer = 0f;
     private bool isCharging = false;
@@ -37,6 +44,12 @@ public class Fishing : MonoBehaviour
     public RectTransform Target;
     [SerializeField] private TMP_Text text;
 
+    [Header ("Choice")]
+    [SerializeField] private GameObject catchChoiceUI;
+    [SerializeField] private Button storeFishButton;
+    [SerializeField] private Button releaseFishButton;
+
+
     [Header("Settings")]
     public float speed = 300f;
 
@@ -51,7 +64,14 @@ public class Fishing : MonoBehaviour
     // Update is called once per frame
 
     void Start(){
+        if(boatInventory == null && boatDropPoint != null){
+            boatInventory = boatDropPoint.GetComponentInParent<BoatInventory>();
 
+        }
+        if(boatInventory == null)
+        {
+            boatInventory = FindObjectOfType<BoatInventory>();
+        }
 
         if(castIndicator != null){
             castIndicator.positionCount = 2;
@@ -61,12 +81,23 @@ public class Fishing : MonoBehaviour
         if (fishingUI != null){
             fishingUI.SetActive(false);
         }
+        if (catchChoiceUI != null)
+        {
+            catchChoiceUI.SetActive(false);
+        }
+        if(storeFishButton != null){
+            storeFishButton.onClick.AddListener(DropCaughtFish);
+        }
+        if(releaseFishButton != null){
+            releaseFishButton.onClick.AddListener(ReleaseCaughtFish);
+        }
         if(Bar != null){
             barWidth = Bar.rect.width;
         }
         text.color = Color.green;
         text.fontSize = 36f;
         text.fontStyle = FontStyles.Bold;
+       
     }
     void Update()
     {
@@ -74,13 +105,7 @@ public class Fishing : MonoBehaviour
         if(!isCharging && activeBobber != null && castIndicator != null){
             castIndicator.SetPosition(0, transform.position);
             Vector3 offset = activeBobber.transform.position - transform.position;
-            if(offset.magnitude > maxCastDistance)
-            {
-                activeBobber.transform.position = transform.position + offset.normalized * maxCastDistance;
-                Rigidbody rb = activeBobber.GetComponent<Rigidbody>();
-                if(rb != null)
-                    rb.linearVelocity = Vector3.zero;
-            }
+
             castIndicator.SetPosition(1, activeBobber.transform.position);
         }
         if(biteReady){
@@ -88,13 +113,21 @@ public class Fishing : MonoBehaviour
             MoveIndicator();
             
             if (Input.GetKeyDown(KeyCode.R)){
-                if(EvaluateSkillCheck()){
-                ResolveCatch();
+                bool caught = EvaluateSkillCheck();
+                if(caught){
+                    ResolveCatch();
+                    Reeling();
+                    ShowCatchChoices();
                 }
-                
+                else{
                 Reeling();
+                canCast = true;
+                }
             
             }
+        } if(caughtFish != null && Input.GetKeyDown(KeyCode.Q))
+        {
+            HandleFish();
         }
         
     }
@@ -165,6 +198,73 @@ public class Fishing : MonoBehaviour
             bobber.transform.position = targetPos;
         }
     }
+    public void DropCaughtFish()
+    {
+        if(caughtFish == null) return;
+
+        Fish fish = caughtFish.GetComponent<Fish>();
+        if(fish != null && boatInventory != null)
+            boatInventory.AddFish(fish);
+        if(boatDropPoint != null){
+        caughtFish.transform.SetParent(boatDropPoint, false);
+        caughtFish.transform.localPosition = Vector3.zero;
+        caughtFish.transform.localRotation = Quaternion.identity;
+        }
+
+        caughtFish = null;
+        FinishCatchChoice();
+    }
+    public void ReleaseCaughtFish()
+    {
+        if(caughtFish != null)
+        {
+            Transform releasePoint = oceanDropPoint != null ? oceanDropPoint : fishingArea;
+            caughtFish.transform.SetParent(null);
+            if(releasePoint != null)
+            {
+                caughtFish.transform.position = releasePoint.position;
+            }
+            caughtFish = null;
+            FinishCatchChoice();
+        }
+    }
+    private void HandleFish()
+    {
+        if(playerCamera == null || caughtFish == null) 
+            return;
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        if(!Physics.Raycast(ray, out RaycastHit hit, interactionDistance)) 
+            return;
+        
+        
+            if (hit.collider != null && hit.collider.CompareTag("Boat"))
+            {
+                DropCaughtFish();
+                Debug.Log("boat!!");
+                return;
+            }
+            if (hit.collider != null && hit.collider.CompareTag("Water"))
+            {
+                ReleaseCaughtFish();
+                Debug.Log("water!!");
+            }
+        
+    }
+    private void ShowCatchChoices()
+    {
+        if(catchChoiceUI != null)
+        {
+            catchChoiceUI.SetActive(false);
+        }
+    }
+    private void FinishCatchChoice()
+    {
+        if(catchChoiceUI != null)
+        {
+            catchChoiceUI.SetActive(true);
+        }
+        canCast = true;
+    }
 
     private void HandleBobberLanded(Collider hitCollider){
         if(bobberLanded || hitCollider == null || hitCollider.gameObject.name != "Water"){
@@ -175,6 +275,7 @@ public class Fishing : MonoBehaviour
 
         
         StartCoroutine(StartBite());
+        Debug.Log("Hit da water!!");
     }
     private IEnumerator StartBite(){
         float delay = Random.Range(minBiteDelay, maxBiteDelay);
@@ -197,7 +298,7 @@ public class Fishing : MonoBehaviour
             Destroy(activeBobber);
 
         activeBobber = null;
-        canCast = true;
+        canCast = false;
         isReeling = false;
         bobberLanded = false;
         biteReady = false;

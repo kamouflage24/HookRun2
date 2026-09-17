@@ -62,10 +62,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fdfc9888e453c7647a51dc1e99ae9d77, type: 3}
       propertyPath: m_Name
-      value: Fish1
+      value: fish
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fdfc9888e453c7647a51dc1e99ae9d77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5950954275606508517}
   m_SourcePrefab: {fileID: 100100000, guid: fdfc9888e453c7647a51dc1e99ae9d77, type: 3}
+--- !u!1 &6609220883635894448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fdfc9888e453c7647a51dc1e99ae9d77, type: 3}
+  m_PrefabInstance: {fileID: 6303283221215364577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5950954275606508517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6609220883635894448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61bca57f2439bfc46a124e59d4656dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fish
+  fishDiff: 50
+  _minWeight: 0.5
+  _maxWeight: 1
+  _minPrice: 10
+  _maxPrice: 20

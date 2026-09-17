@@ -48,6 +48,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5950954275606508517, guid: 4b9fec45a6f8fe44bad4a54321e3d895, type: 3}
+      propertyPath: fishDiff
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950954275606508517, guid: 4b9fec45a6f8fe44bad4a54321e3d895, type: 3}
+      propertyPath: _maxPrice
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950954275606508517, guid: 4b9fec45a6f8fe44bad4a54321e3d895, type: 3}
+      propertyPath: _minPrice
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6210848469845443426, guid: 4b9fec45a6f8fe44bad4a54321e3d895, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -62,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 10e285bc8a3ee9d44aaf6fea62d3cf93, type: 2}
     - target: {fileID: 6609220883635894448, guid: 4b9fec45a6f8fe44bad4a54321e3d895, type: 3}
       propertyPath: m_Name
-      value: Pink Variant 1
+      value: Trout
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
