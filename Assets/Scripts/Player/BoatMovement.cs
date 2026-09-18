@@ -54,8 +54,6 @@ public class BoatMovement : MonoBehaviour
         }
         moveDirection = transform.right * verticalInput;
         rb.AddForce(moveDirection.normalized * speed * 10f, ForceMode.Force);
-        moveDirection = transform.right * verticalInput;
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         float turnDirection = horizontalInput * verticalInput;
         Quaternion turnRotation = Quaternion.Euler(0f, turnDirection * turnSpeed * Time.fixedDeltaTime, 0f);
         rb.MoveRotation(rb.rotation * turnRotation);

@@ -39,6 +39,25 @@ public class BoatInventory : MonoBehaviour
     {
         return totalPrice;
     }
+    public float SellFish()
+    {
+        if(storedFish.Count == 0)
+            return 0f;
+        float value = totalPrice;
+
+        foreach(Fish fish in storedFish)
+        {
+            if(fish != null)
+            {
+                Destroy(fish.gameObject);
+            }
+        }
+        storedFish.Clear();
+        totalWeight = 0f;
+        totalPrice = 0f;
+        RefreshDisplay();
+        return value;
+    }
     public void RefreshDisplay(){
         if(inventoryText == null)
             return;

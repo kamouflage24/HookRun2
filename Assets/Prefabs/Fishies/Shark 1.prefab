@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3955716620791566599
+--- !u!1001 &2104289843693211815
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1efe535b9baf4a54f81d4eadfbcdf899, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.95
+      value: 46.759846
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1efe535b9baf4a54f81d4eadfbcdf899, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.794
+      value: 1.175
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1efe535b9baf4a54f81d4eadfbcdf899, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.457388
+      value: -18.691114
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1efe535b9baf4a54f81d4eadfbcdf899, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4f570314e496c3c4bba7d5196d316fd4, type: 2}
     - target: {fileID: 919132149155446097, guid: 1efe535b9baf4a54f81d4eadfbcdf899, type: 3}
       propertyPath: m_Name
-      value: Shark
+      value: Shark 1
       objectReference: {fileID: 0}
     - target: {fileID: 4920429390965505306, guid: 1efe535b9baf4a54f81d4eadfbcdf899, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -66,27 +66,81 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1efe535b9baf4a54f81d4eadfbcdf899, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 748953680637710616}
+      addedObject: {fileID: 3707162449676755097}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1efe535b9baf4a54f81d4eadfbcdf899, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4523132478616822372}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1efe535b9baf4a54f81d4eadfbcdf899, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8307692310952599164}
   m_SourcePrefab: {fileID: 100100000, guid: 1efe535b9baf4a54f81d4eadfbcdf899, type: 3}
---- !u!1 &4189735920203656278 stripped
+--- !u!1 &1293264987053551094 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1efe535b9baf4a54f81d4eadfbcdf899, type: 3}
-  m_PrefabInstance: {fileID: 3955716620791566599}
+  m_PrefabInstance: {fileID: 2104289843693211815}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &748953680637710616
+--- !u!114 &3707162449676755097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4189735920203656278}
+  m_GameObject: {fileID: 1293264987053551094}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b7d20bcdcde3cf47b4acc7fee571ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shark
-  Boat: {fileID: 6763426034780548898, guid: 32e3af0722432a04b9016b795c66dde3, type: 3}
-  detectionRange: 30
-  chaseSpeed: 20
-  chaseDuration: 10
+  Boat: {fileID: 0}
+  detectionRange: 1000
+  chaseSpeed: 45
+  chaseDuration: 5
   chaseCooldown: 5
+--- !u!65 &4523132478616822372
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293264987053551094}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 5.106475}
+  m_Center: {x: 0, y: 0, z: 0.2692542}
+--- !u!54 &8307692310952599164
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293264987053551094}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
