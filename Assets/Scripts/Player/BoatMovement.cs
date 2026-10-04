@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 using UnityEngine;
 
@@ -12,10 +13,12 @@ public class BoatMovement : MonoBehaviour
    public float turnSpeed = 8f;
 
    [Header("Stamina")]
+   public float CurrentStamina;
    public float maxStamina = 5f;
    public float staminaRegen = 1f;
    public float staminaDrain = 2f;
    public float sprintMult = 1.8f;
+   [SerializeField] private Image staminaBar;
    private float stamina;
    private bool isSprint;
    float horizontalInput;
@@ -30,7 +33,8 @@ public class BoatMovement : MonoBehaviour
         rb.linearDamping = 2f;
         rb.angularDamping = 4f;
         
-        stamina = maxStamina;
+        stamina = Mathf.Max(0f, maxStamina);
+        UpdateStaminaBar();
     }
     private void Update(){
         MyInput();
@@ -84,14 +88,21 @@ public class BoatMovement : MonoBehaviour
         if(isSprint && stamina > 0f && verticalInput != 0f)
         {
             stamina -= staminaDrain * Time.deltaTime;
-            if(stamina > maxStamina) 
-                stamina = maxStamina;
+
         }
         else
         {
             stamina += staminaRegen * Time.deltaTime;
-            if(stamina > maxStamina) 
-                stamina = maxStamina;
+
+        }
+        stamina = Mathf.Clamp(stamina, 0f, maxStamina);
+        UpdateStaminaBar();
+    }
+    private void UpdateStaminaBar()
+    {
+        CurrentStamina = stamina;
+        if(staminaBar != null){
+            staminaBar.fillAmount = maxStamina > 0f ? CurrentStamina / maxStamina : 0f;
         }
     }
 }
