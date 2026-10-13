@@ -2,10 +2,12 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+
 public class SharkSpawner : MonoBehaviour
 {
     public GameObject sharkPrefab;
     public Transform spawnPoint;
+    public SharkIndicator indicator;
 
     public float spawnInterval = 5f;
     public float spawnChance = 0.35f;
@@ -35,6 +37,7 @@ public class SharkSpawner : MonoBehaviour
     void SpawnShark()
     {
         Instantiate(sharkPrefab, spawnPoint.position, spawnPoint.rotation);
+        indicator.shark = spawnPoint;
     }
     
 }
