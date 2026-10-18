@@ -3,11 +3,11 @@ using TMPro;
 
 public class DropOff : MonoBehaviour
 {
-    [SerializeField] private float money = 0f;
+   
     [SerializeField] private float payment = 1000f;
 
     [SerializeField] private TMP_Text moneyText;
-    private bool met = false;
+   
     private void OnTriggerEnter(Collider other)
     {
         TryDeposit(other);
@@ -17,28 +17,30 @@ public class DropOff : MonoBehaviour
     }
     private void TryDeposit(Collider other)
     {
-        BoatInventory inventory = other.GetComponentInChildren<BoatInventory>();
+        BoatInventory inventory = other.GetComponentInParent<BoatInventory>();
+
+        if(inventory == null)
+            inventory = other.GetComponentInChildren<BoatInventory>();
 
         if(inventory == null || inventory.storedFish.Count == 0)
             return;
         
         float value = inventory.SellFish();
 
-        if (value > 0f)
+        if (value <= 0f)
         {
-            money += value;
-            UpdateMoneyUI();
+           return;
         }
-        if (money >= payment){
-            met = true;
-        }
+        inventory.AddMoney(value);
+        UpdateMoneyUI(inventory, value);
     }
-    private void UpdateMoneyUI(){
-        if(moneyText != null){
-            moneyText.text = "Payments: $" + money.ToString("0.00") + "/ $" + payment.ToString("1000.00");
+    private void UpdateMoneyUI(BoatInventory inventory, float deposited){
+        if(moneyText == null)
+            return;
+        
+        string depositMessage = "Deposited: $" + deposited.ToString("0.00");
+        string balanceMessage = "Wallet: $" + inventory.Money.ToString("0.00");
+        string paymentMessage = inventory.Money >= payment ? "Payment Met!" : "Goal: $" + payment.ToString("0.00");
+        moneyText.text = depositMessage + "\n" + balanceMessage + "\n" + paymentMessage;
         }
-        if(met == true){
-            moneyText.text = "Payment Met!!!";
-        }
-    }
 }

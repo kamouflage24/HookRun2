@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine;
 
 
+
+
 public class BoatMovement : MonoBehaviour
 {
    [Header("Movement")]
@@ -12,6 +14,14 @@ public class BoatMovement : MonoBehaviour
    public Transform orientation;
    public BoatInventory inventory;
    public float turnSpeed = 8f;
+   
+   [Header("Boat upgrade")]
+   [SerializeField, Min(0f)] private float upgradeMoveSpeed = 2f;
+   [SerializeField, Min(0f)] private float upgradeSprintMultiplier = 0.2f;
+   [SerializeField, Min(1f)] private float upgradeSizeMultiplier = 1.1f;
+   [SerializeField] private Color upgradedColor = Color.cyan;
+   [SerializeField] private Renderer[] boatRenderers;
+   public bool IsUpgraded {get; private set;}
 
    [Header("Stamina")]
    public float CurrentStamina;
@@ -190,7 +200,7 @@ public class BoatMovement : MonoBehaviour
             rt.sizeDelta = new Vector2(originalBarWidth * normalized, rt.sizeDelta.y);
         }
     }
-        private void UpdateWeightBar()
+    private void UpdateWeightBar()
     {
         
         CurrentWeight = inventory != null ? inventory.totalWeight : 0f;
@@ -199,6 +209,29 @@ public class BoatMovement : MonoBehaviour
             float normalized = maxWeight > 0f ? Mathf.Clamp01(CurrentWeight / maxWeight) : 0f;
             RectTransform rt = WeightBar.rectTransform;
             rt.sizeDelta = new Vector2(originalWeightBarWidth * normalized, rt.sizeDelta.y);
+        }
+    }
+    public void ApplySpeedUpgrade()
+    {
+        if(IsUpgraded)
+            return;
+        IsUpgraded = true;
+        moveSpeed += upgradeMoveSpeed;
+        sprintMult += upgradeSprintMultiplier;
+        transform.localScale *= upgradeSizeMultiplier;
+
+        if(boatRenderers == null || boatRenderers.Length == 0)
+            boatRenderers = GetComponentsInChildren<Renderer>();
+        
+        MaterialPropertyBlock properties = new MaterialPropertyBlock();
+        foreach(Renderer boatRenderer in boatRenderers)
+        {
+            if(boatRenderer == null || boatRenderer.GetComponentInParent<Fish>() != null)
+                continue;
+            boatRenderer.GetPropertyBlock(properties);
+            properties.SetColor("_BaseColor", upgradedColor);
+            properties.SetColor("_Color", upgradedColor);
+            boatRenderer.SetPropertyBlock(properties);
         }
     }
 }

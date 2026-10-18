@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Diagnostics;
 
 
 public class BoatInventory : MonoBehaviour
@@ -8,9 +9,10 @@ public class BoatInventory : MonoBehaviour
 
     public float totalWeight;
     public float totalPrice;
+    [SerializeField] private float money;
     public List<Fish> storedFish = new List<Fish>();
     [SerializeField] private TMP_Text inventoryText;
-
+    public float Money => money;
     private void Start(){
         if(inventoryText == null)
         {
@@ -38,6 +40,27 @@ public class BoatInventory : MonoBehaviour
     public float GetPrice()
     {
         return totalPrice;
+    }
+    public void AddMoney(float amount)
+    {
+        if(amount < 0f)
+        {
+            return;
+        }
+        money += amount;
+        RefreshDisplay();
+    }
+    public bool TrySpendMoney(float amount)
+    {
+        if(amount < 0f)
+        {
+            return false;
+        }
+        if(money < amount)
+            return false;
+        money -= amount;
+        RefreshDisplay();
+        return true;
     }
     public float SellFish()
     {
@@ -73,6 +96,7 @@ public class BoatInventory : MonoBehaviour
             summary += string.Format("- {0} ({1:0.0} kg)\n", name, fish != null ? fish.weight : 0f);
         }
         summary += "Total: " + totalWeight.ToString("0.0") + "kg\n $" + totalPrice.ToString("0.0");
+        summary += "\nWallet: $" + money.ToString("0.00");
         inventoryText.text = summary;
     }
 }

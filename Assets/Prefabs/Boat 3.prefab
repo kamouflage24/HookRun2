@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoatInventory
   totalWeight: 0
   totalPrice: 0
+  money: 0
   storedFish: []
   inventoryText: {fileID: 0}
 --- !u!1 &6261198143747751322
@@ -143,12 +144,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 735715282550995933}
     - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: maxWeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       propertyPath: moveSpeed
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       propertyPath: turnSpeed
-      value: 30
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: maxStamina
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       propertyPath: sprintMult
@@ -158,6 +167,14 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 7504407147334811896}
+    - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: staminaRegen
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: weightThreshold
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5683770840622924423, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0020004236
@@ -199,16 +216,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5996381668570130273, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8133361
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996381668570130273, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3123
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996381668570130273, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5840774
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996381668570130273, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.6608088
+      value: -2.6618
       objectReference: {fileID: 0}
     - target: {fileID: 5996381668570130273, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.306
+      value: 1.3241
       objectReference: {fileID: 0}
     - target: {fileID: 5996381668570130273, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27.997723
+      value: -28.007
       objectReference: {fileID: 0}
     - target: {fileID: 5996381668570130273, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       propertyPath: m_LocalRotation.w

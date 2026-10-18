@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6763426034780548898}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4111126463018037784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2042918882780370185}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2042918882780370185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4111126463018037784}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 193.7012, y: 1.3221405, z: 2.5239105}
+  m_LocalScale: {x: 16.032, y: 16.032, z: 16.032}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6763426034780548898}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4298351102605657676
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoatInventory
   totalWeight: 0
   totalPrice: 0
+  money: 0
   storedFish: []
   inventoryText: {fileID: 0}
 --- !u!1001 &1075209670000396355
@@ -112,21 +144,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
-      propertyPath: moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
-      propertyPath: turnSpeed
+      propertyPath: maxWeight
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: moveSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: turnSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: maxStamina
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       propertyPath: sprintMult
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       propertyPath: orientation
       value: 
       objectReference: {fileID: 7234100666767006399}
+    - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: staminaDrain
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: staminaRegen
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932238902139730929, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      propertyPath: weightThreshold
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5683770840622924423, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0020004236
@@ -228,6 +280,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5996381668570130273, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       insertIndex: 12
       addedObject: {fileID: 1736456567812275724}
+    - targetCorrespondingSourceObject: {fileID: 5996381668570130273, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2042918882780370185}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6376180044871056859, guid: e76560ce6fa9f4c4ab690d99ffb0c3f5, type: 3}
       insertIndex: -1

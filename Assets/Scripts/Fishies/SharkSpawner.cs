@@ -40,7 +40,7 @@ public class SharkSpawner : MonoBehaviour
         GameObject spawnedShark = Instantiate(sharkPrefab, spawnPoint.position, spawnPoint.rotation);
         if(indicator != null)
         {
-            indicator.OnSharkSpawned(spawnedShark.transform);
+            indicator.SetTarget(spawnedShark.transform);
         }
     }
     
