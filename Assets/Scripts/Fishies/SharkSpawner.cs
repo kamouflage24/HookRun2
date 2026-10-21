@@ -1,4 +1,5 @@
 using System.Collections;
+
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -38,10 +39,26 @@ public class SharkSpawner : MonoBehaviour
     {
         
         GameObject spawnedShark = Instantiate(sharkPrefab, spawnPoint.position, spawnPoint.rotation);
-        if(indicator != null)
+        // if(indicator != null)
+        // {
+        //     indicator.SetTarget(spawnedShark.transform);
+        // }
+    }
+    public void JumpScare(Transform target, float distance)
+    {
+        
+        Vector3 forward = target.forward;
+        forward.y = 0f;
+        if(forward.sqrMagnitude <= 0.01f)
         {
-            indicator.SetTarget(spawnedShark.transform);
+            forward = Vector3.forward;
         }
+        forward.Normalize();
+
+        Vector3 spawnPosition = target.position + forward * distance;
+        Quaternion spawnRotation = Quaternion.LookRotation(-forward);
+        GameObject spawnedShark = Instantiate(sharkPrefab, spawnPosition, spawnRotation);
+        
     }
     
 }

@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 public class Shark : MonoBehaviour
 {
     [Header("Target")]
@@ -127,8 +127,7 @@ public class Shark : MonoBehaviour
     {
         if(IsBoatCollision(other))
         {
-            Debug.Log("u dieded");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameOver.TriggerGameOver("You Have Died");
         }
     }
 }
