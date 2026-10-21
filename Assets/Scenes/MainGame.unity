@@ -1079,7 +1079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
   upgradeName: Upgrade
-  price: 200
+  price: 500
   onPurchased:
     m_PersistentCalls:
       m_Calls:
@@ -5603,10 +5603,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   timerText: {fileID: 2003624979}
-  remainingTime: 10.3
+  remainingTime: 600
   sharkSpawner: {fileID: 1773673600}
   player: {fileID: 1514026466}
-  spawnDistance: 60.6
+  spawnDistance: 39.8
 --- !u!1 &946304266
 GameObject:
   m_ObjectHideFlags: 0
@@ -12963,21 +12963,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1701991563}
     - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
+      propertyPath: maxWeight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: StaminaBar
       value: 
       objectReference: {fileID: 836686914}
     - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: sprintMult
-      value: 17.4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: staminaDrain
-      value: 0.52
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: upgradedShader
       value: 
       objectReference: {fileID: -6465566751694194690, guid: f25bebbabb4b297448eb854dec88f0b4, type: 3}
+    - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
+      propertyPath: weightThreshold
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
+      propertyPath: upgradeMoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
+      propertyPath: upgradeSprintMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
