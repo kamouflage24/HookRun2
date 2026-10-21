@@ -6,7 +6,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-    public GameObject pauseMenuUI;
+    [SerializeField] private GameObject pauseMenuUI;
 
     void Awake()
     {
@@ -42,7 +42,11 @@ public class PauseMenu : MonoBehaviour
     }
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        if (ResolvePause())
+        {
+            pauseMenuUI.SetActive(false);
+        }
+        
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -50,11 +54,24 @@ public class PauseMenu : MonoBehaviour
     }
     public void Pause()
     {
-        pauseMenuUI.SetActive(true);
+       if (ResolvePause())
+        {
+            pauseMenuUI.SetActive(true);
+        }
+        
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    private bool ResolvePause()
+    {
+        if(pauseMenuUI == null)
+        {
+            pauseMenuUI = GameObject.Find("PauseMenu");
+        }
+        return true;
     }
 
     public void LoadMenu()
