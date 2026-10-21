@@ -19,7 +19,8 @@ public class BoatMovement : MonoBehaviour
    [SerializeField, Min(0f)] private float upgradeMoveSpeed = 2f;
    [SerializeField, Min(0f)] private float upgradeSprintMultiplier = 0.2f;
    [SerializeField, Min(1f)] private float upgradeSizeMultiplier = 1.1f;
-   [SerializeField] private Color upgradedColor = Color.cyan;
+   [SerializeField] private Shader upgradedShader;
+   [SerializeField] private Color32 upgradedColor = new Color32(255, 255, 255, 255);
    [SerializeField] private Renderer[] boatRenderers;
    public bool IsUpgraded {get; private set;}
 
@@ -228,10 +229,22 @@ public class BoatMovement : MonoBehaviour
         {
             if(boatRenderer == null || boatRenderer.GetComponentInParent<Fish>() != null)
                 continue;
+            if(upgradedShader != null)
+                foreach(Material boatMaterial in boatRenderer.materials)
+                {
+                    if(boatMaterial != null)
+                        boatMaterial.shader = upgradedShader;
+                }
             boatRenderer.GetPropertyBlock(properties);
-            properties.SetColor("_BaseColor", upgradedColor);
-            properties.SetColor("_Color", upgradedColor);
+            //properties.SetColor("_BaseColor", upgradedColor);
+            //properties.SetColor("_Color", upgradedColor);
             boatRenderer.SetPropertyBlock(properties);
         }
+    }
+
+   public void ApplyWeightUpgrade(float maxWeightIncrease, float weightThresholdIncrease)
+    {
+        maxWeight += Mathf.Max(0f, maxWeightIncrease);
+        weightThreshold += Mathf.Max(0f, weightThresholdIncrease);
     }
 }

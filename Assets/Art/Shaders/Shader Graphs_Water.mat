@@ -60,11 +60,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _Depth: 100
-    - _NormStr: 7.2
+    - _NormStr: 32
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _cells: 8.19
-    - _smoothness: 0.633
+    - _cells: 1.09
+    - _smoothness: 1
     m_Colors:
     - _DeepWater: {r: 0, g: 0.54179645, b: 0.57232696, a: 1}
     - _ShallowWater: {r: 0.1365254, g: 0.72581846, b: 0.735849, a: 1}

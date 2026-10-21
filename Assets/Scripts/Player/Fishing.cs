@@ -10,6 +10,9 @@ using System.Data.Common;
 
 
 
+
+
+
 public class Fishing : MonoBehaviour
 {
     [Header("fishing elements")]
@@ -48,7 +51,9 @@ public class Fishing : MonoBehaviour
     [SerializeField] private GameObject catchChoiceUI;
     [SerializeField] private Button storeFishButton;
     [SerializeField] private Button releaseFishButton;
-
+    
+    [Header("Inspection")]
+    [SerializeField] private TMP_Text InspectionText;
 
     [Header("Settings")]
     public float speed = 300f;
@@ -56,14 +61,21 @@ public class Fishing : MonoBehaviour
     private float barWidth;
     private float direction = 1f;
     private bool isActive = true;
+    
 
 
 
     private GameObject activeBobber;
     private GameObject caughtFish;
+    private bool isInspectingCatch;
     // Update is called once per frame
 
     void Start(){
+        if(InspectionText != null)
+        {
+            InspectionText.gameObject.SetActive(false);
+        }
+
         if(boatInventory == null && boatDropPoint != null){
             boatInventory = boatDropPoint.GetComponentInParent<BoatInventory>();
 
@@ -71,6 +83,14 @@ public class Fishing : MonoBehaviour
         if(boatInventory == null)
         {
             boatInventory = FindObjectOfType<BoatInventory>();
+        }
+
+        if(fishingArea == null || fishingArea.GetComponent<FishingArea>() == null)
+        {
+            FishingArea availableArea = FindObjectOfType<FishingArea>();
+            if(availableArea != null)
+                fishingArea = availableArea.transform;
+            
         }
 
         if(castIndicator != null){
@@ -109,25 +129,33 @@ public class Fishing : MonoBehaviour
             castIndicator.SetPosition(1, activeBobber.transform.position);
         }
         if(biteReady){
-   
-            MoveIndicator();
             
-            if (Input.GetKeyDown(KeyCode.R)){
+           
+            MoveIndicator();
+            if(Input.GetKeyDown(KeyCode.R)){
                 bool caught = EvaluateSkillCheck();
                 if(caught){
                     ResolveCatch();
                     Reeling();
                     ShowCatchChoices();
                 }
-                else{
+            
+            else
+            {
                 Reeling();
                 canCast = true;
-                }
-            
+                
             }
-        } if(caughtFish != null && Input.GetKeyDown(KeyCode.Q))
+            
+        }
+        }if(caughtFish != null && Input.GetKeyDown(KeyCode.Q))
         {
             HandleFish();
+        }
+
+        if(caughtFish != null && Input.GetKeyDown(KeyCode.F))
+        {
+            ToggleCatchInspection();
         }
         
     }
@@ -198,10 +226,43 @@ public class Fishing : MonoBehaviour
             bobber.transform.position = targetPos;
         }
     }
+    private void ToggleCatchInspection()
+    {
+        if(InspectionText == null)
+        {
+            return;
+        }
+
+        isInspectingCatch = !isInspectingCatch;
+        if (isInspectingCatch)
+        {
+            Fish fish = caughtFish.GetComponent<Fish>();
+            if(fish == null)
+            {
+                Debug.LogError("The caught fish has no component.");
+                isInspectingCatch = false;
+                return;
+            }
+
+            string fishName = fish.gameObject.name.Replace("(Clone)", "").Trim();
+            InspectionText.text = $"{fishName}\nSize: {fish.weight:0.0} kg\nValue: ${fish.price:0.00}";
+
+        }
+        InspectionText.gameObject.SetActive(isInspectingCatch);
+    }
+
+    private void HideCatchInspection()
+    {
+        isInspectingCatch = false;
+        if(InspectionText != null)
+        {
+            InspectionText.gameObject.SetActive(false);
+        }
+    }
     public void DropCaughtFish()
     {
         if(caughtFish == null) return;
-
+        HideCatchInspection();
         Fish fish = caughtFish.GetComponent<Fish>();
         if(fish != null && boatInventory != null)
             boatInventory.AddFish(fish);
@@ -218,6 +279,7 @@ public class Fishing : MonoBehaviour
     {
         if(caughtFish != null)
         {
+            HideCatchInspection();
             Transform releasePoint = oceanDropPoint != null ? oceanDropPoint : fishingArea;
             caughtFish.transform.SetParent(null);
             if(releasePoint != null)
@@ -271,7 +333,7 @@ public class Fishing : MonoBehaviour
             return;
         }
         bobberLanded = true;
-        isActive = true;
+        
 
         
         StartCoroutine(StartBite());
@@ -284,7 +346,7 @@ public class Fishing : MonoBehaviour
             yield break;
         }
         biteReady = true;
-        isActive = true;
+        
          if(fishingUI != null){
             fishingUI.SetActive(true);
          }
@@ -319,7 +381,7 @@ public class Fishing : MonoBehaviour
         text.text = "GID GUD!!!";
 
         FishingArea area = fishingArea != null ? fishingArea.GetComponent<FishingArea>() : null;
-        GameObject fishPrefab = area != null ? area.GetRandomFishPrefab() : null;
+        GameObject fishPrefab = area != null ? area.GetRandomFishPrefab(boatInventory != null ? boatInventory.FishLuck : 0f) : null;
         if(fishPrefab == null || caughtFishPoint == null){
             return;
         }
@@ -350,21 +412,13 @@ public class Fishing : MonoBehaviour
     bool EvaluateSkillCheck()
     {
         isActive = false;
-        float targetMin = Target.anchoredPosition.x - (Target.rect.width / 2f);
-        float targetMax = Target.anchoredPosition.x + (Target.rect.width / 2f);
-        float indicatorPos = Needle.anchoredPosition.x;
-
-        if(indicatorPos >= targetMin && indicatorPos <= targetMax)
+        Vector3 needlePosition = Target.InverseTransformPoint(Needle.position);
+        if(Target.rect.Contains(new Vector2(needlePosition.x, needlePosition.y)))
         {
             text.text = "FISH ON!!!";
             return true;
         }
-        else
-        {
-            Debug.Log("Fail!!");
             return false;
-        }
+        
     }
 }
-
-

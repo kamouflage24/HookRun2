@@ -28,25 +28,27 @@ public class FishingArea : MonoBehaviour
             }
         }
     }
-    public GameObject GetRandomFishPrefab(){
+    public GameObject GetRandomFishPrefab(float luck = 0f){
         if(fishPrefabs == null || fishPrefabs.Length == 0)
         {
             return null;
         }
-        int totalWeight = 0;
+        float luckExponent = 1f / (1f + Mathf.Max(0f, luck));
+        float totalWeight = 0f;
         foreach (var prefab in fishPrefabs)
         {
             Fish fish = prefab != null ? prefab.GetComponent<Fish>() : null;
             if(fish != null)
             {
-                totalWeight += Mathf.Max(1, fish.fishDiff);
+                totalWeight += Mathf.Pow(Mathf.Max(1, fish.fishDiff), luckExponent);
             }
         } 
         if(totalWeight <= 0){
             return fishPrefabs[Random.Range(0, fishPrefabs.Length)];
         }
-        int roll = Random.Range(0, totalWeight);
-        int sum = 0;
+        float roll = Random.Range(0f, totalWeight);
+        float sum = 0f;
+        GameObject lastFishPrefabs = null;
 
        
         foreach(var prefab in fishPrefabs)
@@ -57,13 +59,13 @@ public class FishingArea : MonoBehaviour
                 continue;
             }
             
-        
-            sum += Mathf.Max(1, fish.fishDiff);
+            lastFishPrefabs = prefab;
+            sum += Mathf.Pow(Mathf.Max(1, fish.fishDiff), luckExponent);
             if(roll < sum){
                 return prefab;
             }
         }
-        return fishPrefabs[fishPrefabs.Length - 1];
+        return lastFishPrefabs;
     }
     Vector3 GetRandomPointInArea()
     {

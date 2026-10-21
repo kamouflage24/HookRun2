@@ -13,6 +13,13 @@ public class BoatInventory : MonoBehaviour
     public List<Fish> storedFish = new List<Fish>();
     [SerializeField] private TMP_Text inventoryText;
     public float Money => money;
+    public float FishLuck {get; private set; }
+
+    public void AddFishLuck(float amount)
+    {
+        FishLuck += Mathf.Max(0f, amount);
+    }
+
     private void Start(){
         if(inventoryText == null)
         {
