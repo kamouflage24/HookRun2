@@ -35,7 +35,7 @@ public class DropOff : MonoBehaviour
         UpdateMoneyUI(inventory, value);
         if(inventory.Money >= payment)
         {
-            GameOver.TriggerGameOver("Payment Met!");
+            GameOver.TriggerGameOver("Payment Met!\n Demo Ended");
         }
     }
     private void UpdateMoneyUI(BoatInventory inventory, float deposited){
