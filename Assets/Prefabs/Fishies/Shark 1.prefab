@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shark
   Boat: {fileID: 0}
   detectionRange: 1000
-  chaseSpeed: 465.2
+  chaseSpeed: 100
   chaseDuration: 5
   chaseCooldown: 15
 --- !u!65 &4523132478616822372
