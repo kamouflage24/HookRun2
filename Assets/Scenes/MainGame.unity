@@ -1516,7 +1516,7 @@ Transform:
   m_GameObject: {fileID: 275283810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.230003, y: 1.06, z: 63.167007}
+  m_LocalPosition: {x: 34.230003, y: 1.06, z: 124.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3167,7 +3167,7 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
@@ -8205,7 +8205,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
@@ -10110,6 +10110,8 @@ MonoBehaviour:
   - {fileID: 9033126352772255852, guid: c1dfbbc8e54b99c438e692e651eeb173, type: 3}
   - {fileID: 919132149155446097, guid: 9d080178861d72a4dbc3f178ec104519, type: 3}
   - {fileID: 3187838074265976685, guid: 89c79a7dba1d8d74d84817f5658966d1, type: 3}
+  - {fileID: 3160430413573341847, guid: bf6f3664f21089840ba8291569332951, type: 3}
+  - {fileID: 4295870626667761965, guid: 6fc5ad73b4dff954699ef893242f61a9, type: 3}
   fishCount: 10
   areaSize: {x: 0.3, y: 5, z: 0.7}
 --- !u!65 &1734973544
@@ -10441,7 +10443,7 @@ Transform:
   m_GameObject: {fileID: 1773673598}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 79.65439, y: 1.175, z: 60.149803}
+  m_LocalPosition: {x: 79.65439, y: 1.175, z: 278.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10462,7 +10464,7 @@ MonoBehaviour:
   sharkPrefab: {fileID: 1293264987053551094, guid: bf28f3c0256f71a4798ea02eeebca8d7, type: 3}
   spawnPoint: {fileID: 1463422233002686064}
   indicator: {fileID: 1643844283}
-  spawnInterval: 5
+  spawnInterval: 15
   spawnChance: 0.1
 --- !u!4 &1801183116 stripped
 Transform:
@@ -12446,11 +12448,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 449243684919988152, guid: 92f3602d10310fb4aa51a503628de83b, type: 3}
       propertyPath: sensX
-      value: 25
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 449243684919988152, guid: 92f3602d10310fb4aa51a503628de83b, type: 3}
       propertyPath: sensY
-      value: 25
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 449243684919988152, guid: 92f3602d10310fb4aa51a503628de83b, type: 3}
       propertyPath: orientation
@@ -12944,11 +12946,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2345024447758975111, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.76
+      value: -41.8
       objectReference: {fileID: 0}
     - target: {fileID: 2345024447758975111, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.26
+      value: 2.58
       objectReference: {fileID: 0}
     - target: {fileID: 5659663428564081979, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: m_Size.x
@@ -13009,6 +13011,14 @@ PrefabInstance:
     - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: maxWeight
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
+      propertyPath: moveSpeed
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
+      propertyPath: turnSpeed
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: StaminaBar
