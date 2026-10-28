@@ -2524,7 +2524,7 @@ TerrainCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
   m_TerrainData: {fileID: 15600000, guid: b215651f83393734d9666a1192c819c7, type: 2}
@@ -13014,11 +13014,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: moveSpeed
-      value: 45
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: turnSpeed
-      value: 120
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: StaminaBar
@@ -13042,7 +13042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: upgradeMoveSpeed
-      value: 8
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8633911564493010516, guid: e98a32162ef55df43bdd4dcb83ace38b, type: 3}
       propertyPath: upgradeSprintMultiplier
