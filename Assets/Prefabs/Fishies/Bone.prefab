@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bca57f2439bfc46a124e59d4656dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fish
-  fishDiff: 0
-  _minWeight: 20
-  _maxWeight: 40
+  fishDiff: 33
+  _minWeight: 10
+  _maxWeight: 17
   _minPrice: 0.1
   _maxPrice: 0.1

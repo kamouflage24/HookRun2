@@ -137,7 +137,7 @@ public class Fishing : MonoBehaviour
                 if(caught){
                     ResolveCatch();
                     Reeling();
-                    ShowCatchChoices();
+                    
                 }
             
             else
@@ -157,6 +157,8 @@ public class Fishing : MonoBehaviour
         {
             ToggleCatchInspection();
         }
+        
+        ShowCatchChoices();
         
     }
     void UpdateCastIndicator(float castDistance){
@@ -314,16 +316,23 @@ public class Fishing : MonoBehaviour
     }
     private void ShowCatchChoices()
     {
-        if(catchChoiceUI != null)
+        if(catchChoiceUI == null)
         {
-            catchChoiceUI.SetActive(false);
+            return;
         }
+
+        bool showChoices = false;
+        if(caughtFish != null && playerCamera != null && Physics.Raycast(new Ray(playerCamera.transform.position, playerCamera.transform.forward), out RaycastHit hit, interactionDistance) && hit.collider != null)
+        {
+            showChoices = hit.collider.CompareTag("Boat") || hit.collider.CompareTag("Water");
+        }
+        catchChoiceUI.SetActive(showChoices);
     }
     private void FinishCatchChoice()
     {
         if(catchChoiceUI != null)
         {
-            catchChoiceUI.SetActive(true);
+            catchChoiceUI.SetActive(false);
         }
         canCast = true;
     }
