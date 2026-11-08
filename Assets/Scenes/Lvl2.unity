@@ -709,8 +709,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PufferFishSpawn
   pufferFishPrefab: {fileID: 5511694660262646065, guid: 42c3df26b44f18a47bb91b575898a85e, type: 3}
+  angyPuffIters: []
   spawnPoint: {fileID: 248043071}
-  spawnInterval: 20
+  spawnInterval: 3
   spawnChance: 0.99
 --- !u!1 &1784732621
 GameObject:
