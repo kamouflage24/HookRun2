@@ -135,9 +135,12 @@ public class Fishing : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.R)){
                 bool caught = EvaluateSkillCheck();
                 if(caught){
-                    ResolveCatch();
+                    bool fulfilledPufferRequest = ResolveCatch();
                     Reeling();
-                    
+                    if (fulfilledPufferRequest)
+                    {
+                        FinishCatchChoice();
+                    }
                 }
             
             else
@@ -380,11 +383,11 @@ public class Fishing : MonoBehaviour
             fishingUI.SetActive(false);
     }
 
-    private void ResolveCatch()
+    private bool ResolveCatch()
     {
         if (catchResolved)
         {
-            return;
+            return false;
         }
         catchResolved = true;
         text.text = "GID GUD!!!";
@@ -392,7 +395,7 @@ public class Fishing : MonoBehaviour
         FishingArea area = fishingArea != null ? fishingArea.GetComponent<FishingArea>() : null;
         GameObject fishPrefab = area != null ? area.GetRandomFishPrefab(boatInventory != null ? boatInventory.FishLuck : 0f) : null;
         if(fishPrefab == null || caughtFishPoint == null){
-            return;
+            return false;
         }
         if(caughtFish != null)
         {
@@ -402,6 +405,19 @@ public class Fishing : MonoBehaviour
         caughtFish.transform.SetParent(caughtFishPoint, false);
         caughtFish.transform.localPosition = Vector3.zero;
         caughtFish.transform.localRotation = Quaternion.identity;
+
+        PufferFish[] pufferFish = FindObjectsOfType<PufferFish>();
+        foreach(PufferFish puffer in pufferFish)
+        {
+            if(puffer != null && puffer.CorrectCatch(caughtFish))
+            {
+                Destroy(caughtFish);
+                caughtFish = null;
+                return true;
+
+            }
+        }
+        return false;
         
     }
     void MoveIndicator()

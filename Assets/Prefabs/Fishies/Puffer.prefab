@@ -70,6 +70,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3266584277718628988}
   m_SourcePrefab: {fileID: 100100000, guid: 36b8c42816d75094181cae92432bd914, type: 3}
+--- !u!137 &1626752569715755428 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -3013064206668864060, guid: 36b8c42816d75094181cae92432bd914, type: 3}
+  m_PrefabInstance: {fileID: 4664621759781301344}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5511694660262646065 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 36b8c42816d75094181cae92432bd914, type: 3}
@@ -88,11 +93,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PufferFish
   Boat: {fileID: 0}
+  fishingArea: {fileID: 0}
   detectionRange: 1000
   chaseSpeed: 599.4
   chaseDuration: 10
   spinSpeed: 1000.2
-  chaseCooldown: 20
+  chaseCooldown: 3
+  fishRenderer: {fileID: 1626752569715755428}
+  maxReels: 3
+  currentReels: 0
+  growthAmount: 0.5
+  redAmount: 0.15
   pufferFishPost: {fileID: 1244805053045219517, guid: 9b054ab9b6f7ab04da3dfe4a140eda7d, type: 3}
 --- !u!54 &-2766843027462992409
 Rigidbody:
