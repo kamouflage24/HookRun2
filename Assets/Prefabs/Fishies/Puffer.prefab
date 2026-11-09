@@ -100,10 +100,12 @@ MonoBehaviour:
   spinSpeed: 1000.2
   chaseCooldown: 3
   fishRenderer: {fileID: 1626752569715755428}
-  maxReels: 3
+  maxReels: 1
   currentReels: 0
-  growthAmount: 0.5
-  redAmount: 0.15
+  maxAngy: 3
+  currentAngy: 0
+  growthAmount: 0.3
+  redAmount: 1
   pufferFishPost: {fileID: 1244805053045219517, guid: 9b054ab9b6f7ab04da3dfe4a140eda7d, type: 3}
 --- !u!54 &-2766843027462992409
 Rigidbody:

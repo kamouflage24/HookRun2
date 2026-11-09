@@ -44,10 +44,10 @@ public class SharkSpawner : MonoBehaviour
         //     indicator.SetTarget(spawnedShark.transform);
         // }
     }
-    public void JumpScare(Transform target, float distance)
+    public void JumpScare(Transform cameraTransform, Vector3 spawnLevelPosition, float distance)
     {
         
-        Vector3 forward = target.forward;
+        Vector3 forward = cameraTransform.forward;
         forward.y = 0f;
         if(forward.sqrMagnitude <= 0.01f)
         {
@@ -55,9 +55,12 @@ public class SharkSpawner : MonoBehaviour
         }
         forward.Normalize();
 
-        Vector3 spawnPosition = target.position + forward * distance;
+        Vector3 spawnPosition = cameraTransform.position + forward * distance;
+        spawnPosition.y = spawnLevelPosition.y;
         Quaternion spawnRotation = Quaternion.LookRotation(-forward);
-        GameObject spawnedShark = Instantiate(sharkPrefab, spawnPosition, spawnRotation);
+        GameObject SpawnedShark = Instantiate(sharkPrefab, spawnPosition, spawnRotation);
+        Shark shark = SpawnedShark.GetComponent<Shark>();
+        shark.chaseSpeed *= 1.4f;
         
     }
     

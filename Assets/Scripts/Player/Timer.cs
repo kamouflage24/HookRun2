@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private float remainingTime;
     [SerializeField] private SharkSpawner sharkSpawner;
     [SerializeField] private Transform player;
+    private Camera playerCamera;
     [SerializeField] private float spawnDistance = 10f;
     private bool hasSpawnedShark;
     
@@ -26,6 +27,10 @@ public class Timer : MonoBehaviour
         if(remainingTime <= 0f && !hasSpawnedShark)
         {
             hasSpawnedShark = true;
+            if(playerCamera == null)
+            {
+                playerCamera = Camera.main;
+            }
             if(player == null)
             {
                 GameObject boat = GameObject.FindGameObjectWithTag("Boat");
@@ -36,7 +41,7 @@ public class Timer : MonoBehaviour
             }
             if(sharkSpawner != null && player != null)
             {
-                sharkSpawner.JumpScare(player, spawnDistance);
+                sharkSpawner.JumpScare(playerCamera.transform, player.position,  spawnDistance);
             }
 
         }

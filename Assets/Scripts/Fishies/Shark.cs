@@ -10,7 +10,7 @@ public class Shark : MonoBehaviour
     [SerializeField] private float detectionRange = 30f;
 
     [Header("Chase")]
-    [SerializeField] private float chaseSpeed = 20f;
+     public float chaseSpeed = 20f;
     [SerializeField] private float chaseDuration = 10f;
 
     [Header("CoolDown")]

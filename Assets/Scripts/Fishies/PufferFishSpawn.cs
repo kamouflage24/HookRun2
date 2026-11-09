@@ -61,9 +61,9 @@ public class PufferFishSpawn : MonoBehaviour
         }
     }
 
-    public void AdvanceIteration()
+    public void AdvanceIteration(int maxAngy)
     {
-        if(angyPuffIters != null && currentIteration < angyPuffIters.Length)
+        if(currentIteration < maxAngy)
         {
             currentIteration++;
             Debug.Log($"Puff is getting Angy");
@@ -76,7 +76,13 @@ public class PufferFishSpawn : MonoBehaviour
         {
             return pufferFishPrefab;
         }
-        return angyPuffIters[currentIteration - 1];
+        if(angyPuffIters == null || angyPuffIters.Length == 0)
+        {
+            return pufferFishPrefab;
+        }
+        
+        int prefabindex = Mathf.Min(currentIteration - 1, angyPuffIters.Length - 1);
+        return angyPuffIters[prefabindex] != null ? angyPuffIters[prefabindex] : pufferFishPrefab;
     }
     
 }

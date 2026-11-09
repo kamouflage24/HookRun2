@@ -38,7 +38,7 @@ public class PufferFish : MonoBehaviour
     [SerializeField] private int maxAngy = 3;
     [SerializeField] private int currentAngy = 0;
 
-    [SerializeField] private float growthAmount = 0.5f;
+    [SerializeField] private float growthAmount = 0.3f;
     [SerializeField] private float redAmount = 0.15f;
 
     private Vector3 OGScale;
@@ -105,17 +105,23 @@ public class PufferFish : MonoBehaviour
         
         rb = GetComponent<Rigidbody>();
         if(Boat == null){
-            Boat = GameObject.FindGameObjectWithTag("Boat")?.transform;
+            Boat = GameObject.FindGameObjectWithTag("Player")?.transform;
         }
         PufferFishPost post = FindObjectOfType<PufferFishPost>();
         if(post != null)
         {
             pufferFishPost = post.gameObject;
             puffTalk = post.PuffTalk;
-            if(puffTalk == null)
+            if(puffTalk != null)
             {
-                Debug.LogError("PufferFIshPost has no child");
+                puffTalk.gameObject.SetActive(false);
             }
+            else
+            {
+               Debug.LogError("PufferFIshPost has no child"); 
+            }
+                
+            
         }
         else if(pufferFishPost == null || !pufferFishPost.scene.IsValid())
         {
@@ -188,20 +194,27 @@ public class PufferFish : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        HandleContact(other);
-        if (currentAngy >= maxAngy)
-        {
-            if(IsBoatCollision(other))
-            {
-            GameOver.TriggerGameOver("You Have Died");
-            }
+        HandlePlayerContact(other);
+        
         }
+    
+
+    private void HandlePlayerContact(Collider other)
+    {
+        if (!IsBoatCollision(other))
+        {
+            return;
+        }
+        if (currentAngy >= maxAngy)
+        {    
+            GameOver.TriggerGameOver("You Have Died");
+            return;
+            }
+        HandleContact(other);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        HandleContact(collision.collider);
-    }
+        
+    
 
     private void HandleContact(Collider other)
     {
@@ -223,6 +236,10 @@ public class PufferFish : MonoBehaviour
         
         transform.SetPositionAndRotation(postTransform.position, postTransform.rotation);
         transform.SetParent(postTransform, true);
+        if(puffTalk != null)
+        {
+            puffTalk.gameObject.SetActive(true);
+        }
         Debug.Log("puffer on boat!");
         NeedFish();
     }
@@ -292,7 +309,7 @@ public class PufferFish : MonoBehaviour
             {
                 currentAngy++;
                 Angy();
-                pufferSpawn?.AdvanceIteration();
+                
             }
             
         }
@@ -319,13 +336,15 @@ public class PufferFish : MonoBehaviour
             }
             requestActive = false;
             StartCoroutine(Despawn());
+            pufferSpawn?.AdvanceIteration(maxAngy);
         }
     }
 
     public void SetSpawner(PufferFishSpawn spawner, int iteration, Material iterationMaterial)
     {
         pufferSpawn = spawner;
-        transform.localScale = OGScale * (1f + growthAmount * iteration);
+        currentAngy = iteration > 0 ? maxAngy : 0;
+        transform.localScale = OGScale * (1f + growthAmount * currentAngy);
         if(fishRenderer != null && iterationMaterial != null)
         {
             fishRenderer.sharedMaterial = iterationMaterial;
@@ -354,7 +373,7 @@ public class PufferFish : MonoBehaviour
             }
         
             CorrectCaughtFish(caughtFish);
-            if(puffTalk != null)
+            if(puffTalk != null && currentAngy < maxAngy)
             {
                 puffTalk.text = $" NO! I wanted {requestedFishName} not {caughtFishName}!";
             }
@@ -380,6 +399,7 @@ public class PufferFish : MonoBehaviour
         yield return new WaitForSeconds(1f);
         PufferFishSpawn.isSpawned = false;
         Destroy(gameObject);
+        
 
     }
     

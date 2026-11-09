@@ -7,6 +7,14 @@ public class PufferFishPost : MonoBehaviour
     
     public List<Fish> storedFish = new List<Fish>();
     [SerializeField] private TMP_Text puffTalk;
+
+    private void Awake()
+    {
+        if(PuffTalk != null)
+        {
+            PuffTalk.gameObject.SetActive(false);
+        }
+    }
     public TMP_Text PuffTalk
     {
         get
