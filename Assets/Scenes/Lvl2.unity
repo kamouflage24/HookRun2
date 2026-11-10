@@ -258,6 +258,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LVL2
       objectReference: {fileID: 0}
+    - target: {fileID: 5359515624795642283, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: spawnChance
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359515624795642283, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: spawnInterval
+      value: 2.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6421038436552661407, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: -117.953575

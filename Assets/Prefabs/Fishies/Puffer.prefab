@@ -70,6 +70,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3266584277718628988}
   m_SourcePrefab: {fileID: 100100000, guid: 36b8c42816d75094181cae92432bd914, type: 3}
+--- !u!4 &832907853495215111 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3804691208162949017, guid: 36b8c42816d75094181cae92432bd914, type: 3}
+  m_PrefabInstance: {fileID: 4664621759781301344}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &1626752569715755428 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -3013064206668864060, guid: 36b8c42816d75094181cae92432bd914, type: 3}
@@ -106,6 +111,11 @@ MonoBehaviour:
   currentAngy: 0
   growthAmount: 0.3
   redAmount: 1
+  VisualRoot: {fileID: 832907853495215111}
+  breathAmount: 0.11
+  breathDuration: 1
+  audioSource: {fileID: 0}
+  pufferDeathSfx: {fileID: 0}
   pufferFishPost: {fileID: 1244805053045219517, guid: 9b054ab9b6f7ab04da3dfe4a140eda7d, type: 3}
 --- !u!54 &-2766843027462992409
 Rigidbody:

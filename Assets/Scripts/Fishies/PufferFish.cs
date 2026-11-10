@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 
 
@@ -40,6 +41,20 @@ public class PufferFish : MonoBehaviour
 
     [SerializeField] private float growthAmount = 0.3f;
     [SerializeField] private float redAmount = 0.15f;
+
+    [Header("Breathing")]
+
+    [SerializeField] private Transform VisualRoot;
+    [SerializeField] private float breathAmount = 0.04f;
+    [SerializeField] private float breathDuration = 1.2f;
+
+    private Vector3 visualBaseScale;
+    private Tween breathTween;
+    
+    [Header("Death Sound")]
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip pufferDeathSfx;
 
     private Vector3 OGScale;
     private Color ogColor;
@@ -103,6 +118,18 @@ public class PufferFish : MonoBehaviour
             ogColor = fishRenderer.sharedMaterial.color;
         }
         
+        if(VisualRoot != null)
+        {
+            visualBaseScale = VisualRoot.localScale;
+            breathTween = VisualRoot
+                .DOScale(visualBaseScale * (1f + breathAmount), breathDuration)
+                .SetEase(Ease.InOutSine)
+                .SetLoops(-1, LoopType.Yoyo);
+        }
+        else
+        {
+            Debug.LogError("Assign VisualRoot for animation");
+        }
         rb = GetComponent<Rigidbody>();
         if(Boat == null){
             Boat = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -207,6 +234,11 @@ public class PufferFish : MonoBehaviour
         }
         if (currentAngy >= maxAngy)
         {    
+            
+            if(audioSource != null && pufferDeathSfx != null)
+            {
+                audioSource.PlayOneShot(pufferDeathSfx);
+            }
             GameOver.TriggerGameOver("You Have Died");
             return;
             }
