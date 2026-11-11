@@ -114,7 +114,7 @@ MonoBehaviour:
   audioSource: {fileID: 5005410792771116872}
   SharkChaseSfx: {fileID: 8300000, guid: db097ed1c0a48164a9f6977558485c57, type: 3}
   underwateroffset: -2
-  abovewaterOffset: 5
+  abovewaterOffset: 12
   riseDistance: 5
   riseDuration: 2.5
 --- !u!65 &4523132478616822372

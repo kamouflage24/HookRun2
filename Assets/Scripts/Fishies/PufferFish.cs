@@ -431,6 +431,10 @@ public class PufferFish : MonoBehaviour
         yield return new WaitForSeconds(1f);
         PufferFishSpawn.isSpawned = false;
         Destroy(gameObject);
+        if(puffTalk != null)
+            {
+                puffTalk.gameObject.SetActive(false);
+            }
         
 
     }

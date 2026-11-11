@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.011
@@ -388,9 +388,13 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.16666657
       objectReference: {fileID: 0}
+    - target: {fileID: 2154869630142330633, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: spawnChance
-      value: 0.35
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: spawnInterval
@@ -495,6 +499,18 @@ PrefabInstance:
     - target: {fileID: 6421038436552661407, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920215570547416595, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920215570547416595, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -48.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920215570547416595, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -51.37
       objectReference: {fileID: 0}
     - target: {fileID: 6926079105526889661, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: sensX
