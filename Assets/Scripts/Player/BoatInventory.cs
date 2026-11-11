@@ -15,6 +15,9 @@ public class BoatInventory : MonoBehaviour
     public float Money => money;
     public float FishLuck {get; private set; }
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip DepositingSfx;
+
     public void AddFishLuck(float amount)
     {
         FishLuck += Mathf.Max(0f, amount);
@@ -83,6 +86,10 @@ public class BoatInventory : MonoBehaviour
             }
         }
         storedFish.Clear();
+        if(audioSource != null && DepositingSfx != null)
+            {
+                audioSource.PlayOneShot(DepositingSfx);
+            }
         totalWeight = 0f;
         totalPrice = 0f;
         RefreshDisplay();

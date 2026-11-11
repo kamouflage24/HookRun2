@@ -7,6 +7,8 @@ public class Shop : MonoBehaviour
 {   
     [SerializeField] private TMP_Text shopText;
     [SerializeField] private Upgrades upgrades;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip DepositingSfx;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -40,6 +42,10 @@ public class Shop : MonoBehaviour
 
         if (upgrades.TryPurchase(inventory))
         {
+            if(audioSource != null && DepositingSfx != null)
+            {
+                audioSource.PlayOneShot(DepositingSfx);
+            }
             UpdateShopText(inventory, upgrades.DisplayName + "purchased!");
         }
         else if (inventory.Money < upgrades.Price){

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DropOff : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class DropOff : MonoBehaviour
     [SerializeField] private float payment = 1000f;
 
     [SerializeField] private TMP_Text moneyText;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip DepositingSfx;
    
     private void OnTriggerEnter(Collider other)
     {
@@ -31,12 +35,19 @@ public class DropOff : MonoBehaviour
         {
            return;
         }
+        
         inventory.AddMoney(value);
         UpdateMoneyUI(inventory, value);
-        if(inventory.Money >= payment)
+        
+        if(inventory.Money >= payment && SceneManager.GetActiveScene().name == "MainGame")
+        {
+            SceneManager.LoadScene("LVL2");
+        }
+        else if (inventory.Money >= payment && SceneManager.GetActiveScene().name == "Lvl2")
         {
             GameOver.TriggerGameOver("Payment Met!\n Demo Ended");
         }
+
     }
     private void UpdateMoneyUI(BoatInventory inventory, float deposited){
         if(moneyText == null)

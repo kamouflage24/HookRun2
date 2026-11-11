@@ -26,8 +26,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137943484284553613}
   m_LocalRotation: {x: 0.000162534, y: 0.07379248, z: -0.00026307767, w: 0.99727356}
-  m_LocalPosition: {x: 0, y: 0, z: 635}
-  m_LocalScale: {x: 10.861051, y: 8.179571, z: 9.220159}
+  m_LocalPosition: {x: 0, y: 0, z: 602.16}
+  m_LocalScale: {x: 14.878693, y: 8.615873, z: 8.664644}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9118087804202951843}
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0.021, y: 8.464, z: -0.029}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1093, y: 1217}
+  m_AnchoredPosition: {x: 1092, y: 1235.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2941839704579520297
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287369365
-  m_fontColor: {r: 0.5849056, g: 0.06437634, b: 0.55094486, a: 1}
+    rgba: 4279435254
+  m_fontColor: {r: 0.9652351, g: 1, b: 0.07232696, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -93,13 +93,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13.65
-  m_fontSizeBase: 13.65
+  m_fontSize: 12.1
+  m_fontSizeBase: 12.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -205,7 +205,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f1874712fbff8e4499e7c14681320911, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1008,6 +1008,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DropOff
   payment: 1000
   moneyText: {fileID: 3211531422758647412}
+  audioSource: {fileID: 0}
+  DepositingSfx: {fileID: 0}
 --- !u!65 &7580911175998119265
 BoxCollider:
   m_ObjectHideFlags: 0

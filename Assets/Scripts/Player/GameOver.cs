@@ -6,6 +6,8 @@ public class GameOver : MonoBehaviour
     public static GameOver Instance{ get; private set; }
     [SerializeField] public GameObject gameOverUI;
     [SerializeField] private TMP_Text gameOverMessage;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip PlayerDedSfx;
 
     public bool IsGameOver {get; private set; }
 
@@ -48,6 +50,10 @@ public class GameOver : MonoBehaviour
         IsGameOver = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        if(audioSource != null && PlayerDedSfx != null)
+            {
+                audioSource.PlayOneShot(PlayerDedSfx);
+            }
 
         if(gameOverUI != null)
         {
