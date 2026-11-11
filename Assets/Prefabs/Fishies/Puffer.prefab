@@ -105,7 +105,7 @@ MonoBehaviour:
   spinSpeed: 1000.2
   chaseCooldown: 3
   fishRenderer: {fileID: 1626752569715755428}
-  maxReels: 1
+  maxReels: 2
   currentReels: 0
   maxAngy: 3
   currentAngy: 0
