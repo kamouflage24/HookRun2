@@ -360,9 +360,77 @@ PrefabInstance:
       propertyPath: m_Name
       value: LVL2
       objectReference: {fileID: 0}
+    - target: {fileID: 555281626243695611, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 555281626243695611, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 555281626243695611, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 555281626243695611, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041194158248420497, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041194158248420497, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_Color.g
+      value: 0.39722234
+      objectReference: {fileID: 0}
+    - target: {fileID: 1041194158248420497, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_Color.r
+      value: 0.16666657
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: spawnChance
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: spawnInterval
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3901079663907389908, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: m_Name
       value: CatchUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365707082708301010, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365707082708301010, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365707082708301010, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365707082708301010, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731727736806151823, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731727736806151823, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731727736806151823, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731727736806151823, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 4951615985565840370, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: audioSource

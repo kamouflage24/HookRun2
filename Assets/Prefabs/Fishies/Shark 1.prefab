@@ -108,11 +108,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shark
   Boat: {fileID: 0}
   detectionRange: 1000
-  chaseSpeed: 150
-  chaseDuration: 8
+  chaseSpeed: 142
+  chaseDuration: 4.5
   chaseCooldown: 15
   audioSource: {fileID: 5005410792771116872}
   SharkChaseSfx: {fileID: 8300000, guid: db097ed1c0a48164a9f6977558485c57, type: 3}
+  underwateroffset: -2
+  abovewaterOffset: 5
+  riseDistance: 5
+  riseDuration: 2.5
 --- !u!65 &4523132478616822372
 BoxCollider:
   m_ObjectHideFlags: 0

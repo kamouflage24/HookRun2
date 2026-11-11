@@ -100,7 +100,7 @@ MonoBehaviour:
   Boat: {fileID: 0}
   fishingArea: {fileID: 0}
   detectionRange: 1000
-  chaseSpeed: 599.4
+  chaseSpeed: 250
   chaseDuration: 10
   spinSpeed: 1000.2
   chaseCooldown: 3
