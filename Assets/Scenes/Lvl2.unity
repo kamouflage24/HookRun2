@@ -16,9 +16,9 @@ RenderSettings:
   serializedVersion: 10
   m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
-  m_LinearFogStart: 0
+  m_FogMode: 1
+  m_FogDensity: 0.052
+  m_LinearFogStart: 207.2
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
@@ -452,6 +452,10 @@ PrefabInstance:
       propertyPath: spawnInterval
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5888615795831538186, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c6fdde0332228d4785952ffe5bc184f, type: 2}
     - target: {fileID: 6120413344156508488, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: audioSource
       value: 
