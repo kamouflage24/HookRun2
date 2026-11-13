@@ -388,6 +388,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.16666657
       objectReference: {fileID: 0}
+    - target: {fileID: 1095978471217890242, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 812446596}
+    - target: {fileID: 1095978471217890242, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: DepositingSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: d5fc808ba693edc45900d29027caf5c0, type: 3}
     - target: {fileID: 2154869630142330633, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.7
@@ -398,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 5838100647590093821}
     - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: spawnChance
-      value: 0.35
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: playerCamera
@@ -410,7 +418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: spawnInterval
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3901079663907389908, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: m_Name
@@ -518,15 +526,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6920215570547416595, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.54
+      value: 9.43
       objectReference: {fileID: 0}
     - target: {fileID: 6920215570547416595, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -48.77
+      value: -49.017
       objectReference: {fileID: 0}
     - target: {fileID: 6920215570547416595, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -51.37
+      value: -51.167
       objectReference: {fileID: 0}
     - target: {fileID: 6926079105526889661, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: sensX
@@ -535,6 +543,14 @@ PrefabInstance:
     - target: {fileID: 6926079105526889661, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: sensY
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462775117775653296, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462775117775653296, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: DepositingSfx
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
