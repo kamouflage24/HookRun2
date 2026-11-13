@@ -16,8 +16,8 @@ RenderSettings:
   serializedVersion: 10
   m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 1
-  m_FogDensity: 0.052
+  m_FogMode: 3
+  m_FogDensity: 0.008
   m_LinearFogStart: 207.2
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -263,7 +263,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d5fc808ba693edc45900d29027caf5c0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -393,8 +393,20 @@ PrefabInstance:
       value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 5838100647590093821}
+    - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: spawnChance
       value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 5838100647590093820}
+    - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+      propertyPath: spawnDistance
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 3630181100672211445, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
       propertyPath: spawnInterval
@@ -535,6 +547,16 @@ PrefabInstance:
 --- !u!82 &5838100647590093819 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4230016880290266074, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+  m_PrefabInstance: {fileID: 5838100647590093818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5838100647590093820 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1582868250607152047, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
+  m_PrefabInstance: {fileID: 5838100647590093818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5838100647590093821 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5431720568927419565, guid: 0504676d6c7e36643abf99e81d9934ec, type: 3}
   m_PrefabInstance: {fileID: 5838100647590093818}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

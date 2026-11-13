@@ -10,10 +10,27 @@ public class SharkSpawner : MonoBehaviour
     public Transform spawnPoint;
     public SharkIndicator indicator;
 
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform playerCamera;
+    [SerializeField] private float spawnDistance = 80f;
+
     public float spawnInterval = 5f;
     public float spawnChance = 0.35f;
 
     private float timer;
+    
+
+    private void Awake()
+    {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Boat")?.transform;
+        }
+        if(playerCamera == null && Camera.main != null)
+        {
+            playerCamera = Camera.main.transform;
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
 
@@ -37,8 +54,19 @@ public class SharkSpawner : MonoBehaviour
     }
     void SpawnShark()
     {
-        
-        GameObject spawnedShark = Instantiate(sharkPrefab, spawnPoint.position, spawnPoint.rotation);
+        Vector3 forward = playerCamera.forward;
+        forward.y = 0f;
+        if(forward.sqrMagnitude <= 0.01f)
+        {
+            forward = player.right;
+            forward.y = 0f;
+        }
+        forward.Normalize();
+
+        Vector3 spawnPosition = player.position + forward * spawnDistance;
+        spawnPosition.y = spawnPoint != null ? spawnPoint.position.y : player.position.y;
+        Quaternion spawnRotation = Quaternion.LookRotation(-forward);
+        GameObject spawnedShark = Instantiate(sharkPrefab, spawnPosition, spawnRotation);
         // if(indicator != null)
         // {
         //     indicator.SetTarget(spawnedShark.transform);
